@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var imagesButton: UIButton!
+    
+    @IBAction func cameraButtonTapped(_ sender: UIButton) {
+        print("camera button tapped")
+    }
+    
+    @IBAction func imagesButtonTapped(_ sender: UIButton) {
+        print("image button tapped")
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
