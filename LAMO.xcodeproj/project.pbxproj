@@ -12,6 +12,7 @@
 		050D933E1F0AEDA60098215E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D933C1F0AEDA60098215E /* Main.storyboard */; };
 		050D93401F0AEDA60098215E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 050D933F1F0AEDA60098215E /* Assets.xcassets */; };
 		050D93431F0AEDA60098215E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93411F0AEDA60098215E /* LaunchScreen.storyboard */; };
+		F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D215318AD04A20F9454109 /* Pods_LAMO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		050D933F1F0AEDA60098215E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		050D93421F0AEDA60098215E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		050D93441F0AEDA60098215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
+		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				050D93371F0AEDA60098215E /* LAMO */,
 				050D93361F0AEDA60098215E /* Products */,
+				DB843FD13BB7296B424534CA /* Pods */,
+				7F3B74472340D17ADD622FFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = LAMO;
 			sourceTree = "<group>";
 		};
+		7F3B74472340D17ADD622FFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61D215318AD04A20F9454109 /* Pods_LAMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB843FD13BB7296B424534CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */,
+				C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 050D93471F0AEDA60098215E /* Build configuration list for PBXNativeTarget "LAMO" */;
 			buildPhases = (
+				FBFCA783DC439B0E547D7026 /* [CP] Check Pods Manifest.lock */,
 				050D93311F0AEDA60098215E /* Sources */,
 				050D93321F0AEDA60098215E /* Frameworks */,
 				050D93331F0AEDA60098215E /* Resources */,
+				CB270D3AC68C65C835F4C559 /* [CP] Embed Pods Frameworks */,
+				0BFC28FDB11530848B119507 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BFC28FDB11530848B119507 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LAMO/Pods-LAMO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB270D3AC68C65C835F4C559 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LAMO/Pods-LAMO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBFCA783DC439B0E547D7026 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		050D93311F0AEDA60098215E /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		050D93481F0AEDA60098215E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LAMO/Info.plist;
@@ -270,6 +346,7 @@
 		};
 		050D93491F0AEDA60098215E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LAMO/Info.plist;
