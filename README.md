@@ -1,1 +1,1 @@
-An app made in MakeSchool
+An app that uses photo API  made in MakeSchool
