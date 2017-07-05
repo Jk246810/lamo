@@ -72,14 +72,14 @@ extension MainViewController {
                 
                 // get face annotation
                 let faceAnnotation: JSON = response["faceAnnotations"]
-                if faceAnnotation != nil {
-                    let emotions: Array<String> = ["joy", "sorrow", "suprise", "anger"]
+                if faceAnnotation != JSON.null {
+                    let emotions: Array<String> = ["joy", "sorrow", "surprise", "anger"]
                     
                     let numPeopleDetected: Int = faceAnnotation.count
                     
                     self.faceResult.text = "People detected: \(numPeopleDetected)\nEmotions detected:\n"
                     
-                    var emotionalsTotal: [String: Double] = ["sorrow": 0, "joy": 0, "suprise": 0, "anger": 0]
+                    var emotionalsTotal: [String: Double] = ["sorrow": 0, "joy": 0, "surprise": 0, "anger": 0]
                     var emotionalLikelihoods: [String: Double] = ["VERY_LIKELY": 0.9, "LIKELY": 0.75, "POSSIBLE": 0.5, "UNLIKELY": 0.25, "VERY_UNLIKELY": 0.0]
                     
                     for person in 0..<numPeopleDetected {
@@ -91,13 +91,13 @@ extension MainViewController {
                             
                             emotionalsTotal[emotion]! += emotionalLikelihoods[results]!
                         }
-                        
-                        for (emotion, total) in emotionalsTotal {
-                            let likelihood: Double = total / Double(numPeopleDetected)
-                            let percent: Int = Int(round(likelihood * 100))
+                    }
+                    
+                    for (emotion, total) in emotionalsTotal {
+                        let likelihood: Double = total / Double(numPeopleDetected)
+                        let percent: Int = Int(round(likelihood * 100))
                             
-                            self.faceResult.text! += "\(emotion): \(percent)%\n"
-                        }
+                        self.faceResult.text! += "\(emotion): \(percent)%\n"
                     }
                     
                 } else {

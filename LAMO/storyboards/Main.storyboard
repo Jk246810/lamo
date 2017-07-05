@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,16 +44,17 @@
                                     <action selector="libraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z9W-Ng-GzL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="result label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-FB-Dql">
-                                <rect key="frame" x="186" y="611" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-FB-Dql">
+                                <rect key="frame" x="20" y="507" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="XFv-O5-4r6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="facial result label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zT-1P-nmD">
-                                <rect key="frame" x="164" y="659" width="129" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facial result label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zT-1P-nmD">
+                                <rect key="frame" x="20" y="639" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,8 +64,15 @@
                         <constraints>
                             <constraint firstItem="pgS-ao-NyW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="163" id="02o-bb-25K"/>
                             <constraint firstItem="pgS-ao-NyW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BXG-ON-g5h"/>
+                            <constraint firstItem="4zT-1P-nmD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="H3u-2n-qVY"/>
+                            <constraint firstItem="Os3-FB-Dql" firstAttribute="top" secondItem="IaH-xg-oUu" secondAttribute="bottom" id="OAx-jW-BZF"/>
                             <constraint firstItem="IaH-xg-oUu" firstAttribute="top" secondItem="pgS-ao-NyW" secondAttribute="bottom" constant="68" id="Pnd-aG-btO"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="4zT-1P-nmD" secondAttribute="bottom" constant="76" id="SFu-S7-0Uh"/>
+                            <constraint firstItem="4zT-1P-nmD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="a2G-x9-5ze"/>
                             <constraint firstItem="IaH-xg-oUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sGG-sD-5WX"/>
+                            <constraint firstItem="4zT-1P-nmD" firstAttribute="top" secondItem="Os3-FB-Dql" secondAttribute="bottom" constant="111" id="tbr-5a-pe2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Os3-FB-Dql" secondAttribute="trailing" id="zN9-RT-lOv"/>
+                            <constraint firstItem="Os3-FB-Dql" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ze5-69-k5v"/>
                         </constraints>
                     </view>
                     <connections>
