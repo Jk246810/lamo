@@ -10,9 +10,9 @@
 		050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050D93381F0AEDA60098215E /* AppDelegate.swift */; };
 		050D93401F0AEDA60098215E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 050D933F1F0AEDA60098215E /* Assets.xcassets */; };
 		050D934E1F0B01BA0098215E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 050D934D1F0B01BA0098215E /* Info.plist */; };
-		050D93501F0B01C30098215E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050D934F1F0B01C30098215E /* ViewController.swift */; };
 		050D93531F0B01CB0098215E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93511F0B01CB0098215E /* LaunchScreen.storyboard */; };
 		050D93541F0B01CB0098215E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93521F0B01CB0098215E /* Main.storyboard */; };
+		05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */; };
 		F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D215318AD04A20F9454109 /* Pods_LAMO.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,9 +21,9 @@
 		050D93381F0AEDA60098215E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		050D933F1F0AEDA60098215E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		050D934D1F0B01BA0098215E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = supporting/Info.plist; sourceTree = "<group>"; };
-		050D934F1F0B01C30098215E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = controllers/ViewController.swift; sourceTree = "<group>"; };
 		050D93511F0B01CB0098215E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		050D93521F0B01CB0098215E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = storyboards/Main.storyboard; sourceTree = "<group>"; };
+		05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = controllers/MainViewController.swift; sourceTree = "<group>"; };
 		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
 		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		050D934B1F0B018C0098215E /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				050D934F1F0B01C30098215E /* ViewController.swift */,
+				05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -237,8 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				050D93501F0B01C30098215E /* ViewController.swift in Sources */,
 				050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */,
+				05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,5 +6,6 @@ target 'LAMO' do
   use_frameworks!
 
   # Pods for LAMO
+  pod 'SwiftyJSON', '~> 3.1'
 
 end
