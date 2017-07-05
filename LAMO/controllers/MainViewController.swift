@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var imagePicker = UIImagePickerController()
+    
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
 
@@ -23,21 +27,17 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
         print("camera button tapped")
     }
-
+    
+    // open the photo library
     @IBAction func libraryButtonTapped(_ sender: UIButton) {
         print("library button tapped")
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
     }
 }
