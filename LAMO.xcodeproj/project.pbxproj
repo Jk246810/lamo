@@ -92,6 +92,7 @@
 			children = (
 				050D93511F0B01CB0098215E /* LaunchScreen.storyboard */,
 				050D93521F0B01CB0098215E /* Main.storyboard */,
+				D38877051F0D81DE00FDA95B /* Helpers */,
 			);
 			name = storyboards;
 			sourceTree = "<group>";
@@ -102,6 +103,13 @@
 				61D215318AD04A20F9454109 /* Pods_LAMO.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D38877051F0D81DE00FDA95B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		DB843FD13BB7296B424534CA /* Pods */ = {
@@ -148,6 +156,7 @@
 				TargetAttributes = {
 					050D93341F0AEDA60098215E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = TUYCPAYDZW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -343,6 +352,7 @@
 			baseConfigurationReference = DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TUYCPAYDZW;
 				INFOPLIST_FILE = "$(SRCROOT)/LAMO/supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.LAMO;
@@ -356,6 +366,7 @@
 			baseConfigurationReference = C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TUYCPAYDZW;
 				INFOPLIST_FILE = "$(SRCROOT)/LAMO/supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.LAMO;
