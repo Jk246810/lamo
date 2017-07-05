@@ -135,20 +135,127 @@ extension MainViewController {
             
         })
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any?]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // do the init during rendering the code for the images
+            
+            let binaryImageData = base64EncodeImage(pickedImage)
+            // create the request with the image data retrieved
+            createRequest(with: binaryImageData)
+        }
+    }
+    
+    // close the photo library when its cancelled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // resize the image
+    func resizeImage(_ imageSize: CGSize, image: UIImage) -> Data {
+        UIGraphicsBeginImageContext(imageSize)
+        
+        image.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let resizedImage = UIImagePNGRepresentation(newImage!)
+        UIGraphicsEndImageContext()
+        return resizedImage!
+    }
+}
+
+// networking
+extension MainViewController {
+    // return the image data
+    func base64EncodeImage(_ image: UIImage) -> String {
+        var imageData = UIImagePNGRepresentation(image)
+        
+        // resize the image if it is larger than 2mb limit
+        if (imageData!.count > 2097152) {
+            let oldSize: CGSize = image.size
+            let newSize: CGSize = CGSize(width: 800, height: oldSize.height / oldSize.width * 800)
+            imageData = resizeImage(newSize, image: image)
+        }
+        
+        return imageData!.base64EncodedString(options: .endLineWithCarriageReturn)
+    }
+    
+    func createRequest(with imageBase64: String) {
+        
+        var request = URLRequest(url: googleURL)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+        
+        // build api request
+        let jsonRequest = [
+            "requests": [
+                "image": [
+                    "content": imageBase64
+                ],
+                "features": [
+                    [
+                        "type": "LABEL_DETECTION",
+                        "maxResults": 10
+                    ],
+                    [
+                        "type": "FACE_DETECTION",
+                        "maxResults": 10
+                    ]
+                ]
+            ]
+        ]
+        
+        let jsonObject = JSON(jsonDictionary: jsonRequest)
+        
+        // serialize the json
+        guard let data = try? jsonObject.rawData() else {
+            return
+        }
+        
+        request.httpBody = data
+        
+        // run the request
+        DispatchQueue.global().async {
+            self.runRequestOnBackgroundThread(request)
+        }
+    }
+    
+    func runRequestOnBackgroundThread(_ request: URLRequest) {
+        // run the request 
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            
+            self.analyzeResult(data)
+        }
+        
+        task.resume()
+    }
 }
 
 
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
