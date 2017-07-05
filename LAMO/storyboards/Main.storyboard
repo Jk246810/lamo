@@ -29,7 +29,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="camera icon"/>
                                 <connections>
-                                    <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wLB-Wm-L1J"/>
+                                    <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5bT-gL-cq3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaH-xg-oUu">
@@ -40,7 +40,7 @@
                                 </constraints>
                                 <state key="normal" image="images icon"/>
                                 <connections>
-                                    <action selector="imagesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbE-EB-wYq"/>
+                                    <action selector="imagesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J5q-RF-KLb"/>
                                 </connections>
                             </button>
                         </subviews>

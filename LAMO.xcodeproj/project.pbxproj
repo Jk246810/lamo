@@ -13,6 +13,7 @@
 		050D93501F0B01C30098215E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050D934F1F0B01C30098215E /* ViewController.swift */; };
 		050D93531F0B01CB0098215E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93511F0B01CB0098215E /* LaunchScreen.storyboard */; };
 		050D93541F0B01CB0098215E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93521F0B01CB0098215E /* Main.storyboard */; };
+		D38877071F0D840100FDA95B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38877061F0D840100FDA95B /* CameraViewController.swift */; };
 		F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D215318AD04A20F9454109 /* Pods_LAMO.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		050D93521F0B01CB0098215E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = storyboards/Main.storyboard; sourceTree = "<group>"; };
 		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
+		D38877061F0D840100FDA95B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = controllers/CameraViewController.swift; sourceTree = "<group>"; };
 		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				050D934F1F0B01C30098215E /* ViewController.swift */,
+				D38877061F0D840100FDA95B /* CameraViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -92,6 +95,7 @@
 			children = (
 				050D93511F0B01CB0098215E /* LaunchScreen.storyboard */,
 				050D93521F0B01CB0098215E /* Main.storyboard */,
+				D38877051F0D81DE00FDA95B /* Helpers */,
 			);
 			name = storyboards;
 			sourceTree = "<group>";
@@ -102,6 +106,13 @@
 				61D215318AD04A20F9454109 /* Pods_LAMO.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D38877051F0D81DE00FDA95B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		DB843FD13BB7296B424534CA /* Pods */ = {
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					050D93341F0AEDA60098215E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = TUYCPAYDZW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -239,6 +251,7 @@
 			files = (
 				050D93501F0B01C30098215E /* ViewController.swift in Sources */,
 				050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */,
+				D38877071F0D840100FDA95B /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +356,7 @@
 			baseConfigurationReference = DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TUYCPAYDZW;
 				INFOPLIST_FILE = "$(SRCROOT)/LAMO/supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.LAMO;
@@ -356,6 +370,7 @@
 			baseConfigurationReference = C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TUYCPAYDZW;
 				INFOPLIST_FILE = "$(SRCROOT)/LAMO/supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.LAMO;
