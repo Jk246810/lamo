@@ -30,7 +30,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="camera icon"/>
                                 <connections>
-                                    <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x22-fF-cn7"/>
+                                    <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vKS-AZ-DYy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaH-xg-oUu">
@@ -76,7 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cameraButton" destination="pgS-ao-NyW" id="34j-h0-Fz1"/>
+                        <outlet property="cameraButton" destination="pgS-ao-NyW" id="LKj-3m-nKb"/>
                         <outlet property="faceResult" destination="4zT-1P-nmD" id="n7U-Q2-zmb"/>
                         <outlet property="libraryButton" destination="IaH-xg-oUu" id="xp4-19-7Xj"/>
                         <outlet property="resultLabel" destination="Os3-FB-Dql" id="I9o-b8-wZf"/>

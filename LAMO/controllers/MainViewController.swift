@@ -19,6 +19,9 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
     
+    var image: UIImage?
+    
+    
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
@@ -38,12 +41,23 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
-        print("camera button tapped")
+        
+        //implement initialze a uiimagepickerconroller
+        let cameraViewController = UIImagePickerController()
+        //set the type to camera
+        cameraViewController.sourceType = .camera
+        
+        //delegate
+        
+        cameraViewController.delegate = self
+        //present the imagepicker
+        
+        present(cameraViewController, animated: true, completion: nil)
     }
+
     
     // open the photo library
     @IBAction func libraryButtonTapped(_ sender: UIButton) {
-        print("library button tapped")
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
@@ -136,6 +150,7 @@ extension MainViewController {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        // photo library
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // do the init during rendering the code for the images
             print("code is running")
@@ -144,13 +159,19 @@ extension MainViewController {
             // create the request with the image data retrieved
             createRequest(with: binaryImageData)
         }
+//        dismiss(animated: true, completion: nil)
         
-        dismiss(animated: true, completion: nil)
+        // camera
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.image = selectedImage
+        }
+        
+        picker.dismiss(animated: true)
     }
     
     // close the photo library when its cancelled
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     // resize the image
