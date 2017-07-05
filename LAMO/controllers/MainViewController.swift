@@ -28,13 +28,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
-        imagePicker.delegate = self
         
     }
     
@@ -69,7 +68,7 @@ extension MainViewController {
                 // print the json to the console
                 print(json)
                 
-                let response: JSON = json["response"][0]
+                let response: JSON = json["responses"][0]
                 
                 // get face annotation
                 let faceAnnotation: JSON = response["faceAnnotations"]
@@ -136,14 +135,17 @@ extension MainViewController {
         })
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any?]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // do the init during rendering the code for the images
+            print("code is running")
             
             let binaryImageData = base64EncodeImage(pickedImage)
             // create the request with the image data retrieved
             createRequest(with: binaryImageData)
         }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     // close the photo library when its cancelled
@@ -228,6 +230,7 @@ extension MainViewController {
                 return
             }
             
+            // call the analyze result function
             self.analyzeResult(data)
         }
         
