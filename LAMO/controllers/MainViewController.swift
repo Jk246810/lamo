@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     let imagePicker = UIImagePickerController()
     let session = URLSession.shared
     
@@ -20,7 +19,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     var image: UIImage?
-    
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
@@ -68,18 +66,14 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 // handle the photos
 extension MainViewController {
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         // photo library
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // do the init during rendering the code for the images
-            print("code is running")
-            
             let binaryImageData = PhotoLibrary.base64EncodeImage(pickedImage)
             // create the request with the image data retrieved
             PhotoLibrary.createRequest(with: binaryImageData, url: googleURL, viewController: self)
         }
-//        dismiss(animated: true, completion: nil)
         
         // camera
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -94,7 +88,6 @@ extension MainViewController {
         picker.dismiss(animated: true, completion: nil)
     }
 }
-
 
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.

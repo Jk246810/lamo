@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050D93381F0AEDA60098215E /* AppDelegate.swift */; };
 		050D93401F0AEDA60098215E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 050D933F1F0AEDA60098215E /* Assets.xcassets */; };
-		050D93531F0B01CB0098215E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93511F0B01CB0098215E /* LaunchScreen.storyboard */; };
 		050D93541F0B01CB0098215E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93521F0B01CB0098215E /* Main.storyboard */; };
 		052AB3E51F0E9A3500A8905D /* PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052AB3E41F0E9A3500A8905D /* PhotoLibrary.swift */; };
 		05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */; };
-		05B749371F0DB3760000C685 /* PhotoLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B749361F0DB3760000C685 /* PhotoLibraryTableViewController.swift */; };
+		05C7692F1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C7692E1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift */; };
 		F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D215318AD04A20F9454109 /* Pods_LAMO.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,11 +21,10 @@
 		050D93381F0AEDA60098215E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		050D933F1F0AEDA60098215E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		050D934D1F0B01BA0098215E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = supporting/Info.plist; sourceTree = "<group>"; };
-		050D93511F0B01CB0098215E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		050D93521F0B01CB0098215E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = storyboards/Main.storyboard; sourceTree = "<group>"; };
 		052AB3E41F0E9A3500A8905D /* PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoLibrary.swift; path = models/PhotoLibrary.swift; sourceTree = "<group>"; };
 		05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = controllers/MainViewController.swift; sourceTree = "<group>"; };
-		05B749361F0DB3760000C685 /* PhotoLibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoLibraryTableViewController.swift; path = controllers/PhotoLibraryTableViewController.swift; sourceTree = "<group>"; };
+		05C7692E1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoLibraryViewController.swift; path = controllers/PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
 		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */,
-				05B749361F0DB3760000C685 /* PhotoLibraryTableViewController.swift */,
+				05C7692E1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -95,9 +93,7 @@
 		050D934C1F0B01980098215E /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				050D93511F0B01CB0098215E /* LaunchScreen.storyboard */,
 				050D93521F0B01CB0098215E /* Main.storyboard */,
-				D38877051F0D81DE00FDA95B /* Helpers */,
 			);
 			name = storyboards;
 			sourceTree = "<group>";
@@ -124,13 +120,6 @@
 				61D215318AD04A20F9454109 /* Pods_LAMO.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D38877051F0D81DE00FDA95B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 		DB843FD13BB7296B424534CA /* Pods */ = {
@@ -205,7 +194,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				050D93531F0B01CB0098215E /* LaunchScreen.storyboard in Resources */,
 				050D93401F0AEDA60098215E /* Assets.xcassets in Resources */,
 				050D93541F0B01CB0098215E /* Main.storyboard in Resources */,
 			);
@@ -268,7 +256,7 @@
 			files = (
 				052AB3E51F0E9A3500A8905D /* PhotoLibrary.swift in Sources */,
 				050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */,
-				05B749371F0DB3760000C685 /* PhotoLibraryTableViewController.swift in Sources */,
+				05C7692F1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift in Sources */,
 				05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,9 @@ import Foundation
 import SwiftyJSON
 
 struct PhotoLibrary {
+    static var resultLabelText: String = ""
+    static var resultFacialText: String = ""
+    
     // resize the image
     static func resize(imageSize: CGSize, image: UIImage) -> Data {
         UIGraphicsBeginImageContext(imageSize)
@@ -31,6 +34,7 @@ struct PhotoLibrary {
             
             if (errorObj.dictionaryValue != [:]) {
                 mainViewController.resultLabel.text = "Error code \(errorObj["code"]): \(errorObj["message"])"
+                resultLabelText = "Error code \(errorObj["code"]): \(errorObj["message"])"
             } else {
                 // print the json to the console
                 print(json)
@@ -45,6 +49,7 @@ struct PhotoLibrary {
                     let numPeopleDetected: Int = faceAnnotation.count
                     
                     mainViewController.faceResult.text = "People detected: \(numPeopleDetected)\nEmotions detected:\n"
+                    resultFacialText = "People detected: \(numPeopleDetected)\nEmotions detected:\n"
                     
                     var emotionalsTotal: [String: Double] = ["sorrow": 0, "joy": 0, "surprise": 0, "anger": 0]
                     var emotionalLikelihoods: [String: Double] = ["VERY_LIKELY": 0.9, "LIKELY": 0.75, "POSSIBLE": 0.5, "UNLIKELY": 0.25, "VERY_UNLIKELY": 0.0]
@@ -65,10 +70,12 @@ struct PhotoLibrary {
                         let percent: Int = Int(round(likelihood * 100))
                         
                         mainViewController.faceResult.text! += "\(emotion): \(percent)%\n"
+                        resultFacialText += "\(emotion): \(percent)%\n"
                     }
                     
                 } else {
                     mainViewController.faceResult.text = "No face detected"
+                    resultFacialText = "No face detected"
                 }
                 
                 // get label annotation
@@ -94,8 +101,10 @@ struct PhotoLibrary {
                     }
                     
                     mainViewController.resultLabel.text = labelResultText
+                    resultLabelText = labelResultText
                 } else {
                     mainViewController.resultLabel.text = "No label found"
+                    resultLabelText = "No label found"
                 }
             }
             
