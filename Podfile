@@ -7,5 +7,5 @@ target 'LAMO' do
 
   # Pods for LAMO
   pod 'SwiftyJSON', '~> 3.1'
-
+  pod 'Alamofire', '~> 4.4'
 end

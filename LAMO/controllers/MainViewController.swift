@@ -13,11 +13,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let imagePicker = UIImagePickerController()
     let session = URLSession.shared
     
-    let googleAPIKey = "AIzaSyBWULC40id62H2C7Iao2ZjBu4B5mU7vkvc"
-    var googleURL: URL {
-        return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
-    }
-    
     var image: UIImage?
     
     @IBOutlet weak var cameraButton: UIButton!
@@ -64,16 +59,10 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 // handle the photos
 extension MainViewController {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         // photo library
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            // do the init during rendering the code for the images
-            let binaryImageData = PhotoLibrary.base64EncodeImage(pickedImage)
-            // create the request with the image data retrieved
-            PhotoLibrary.createRequest(with: binaryImageData, url: googleURL, viewController: self)
-            // set the photo in the photolibrary to the picked image
-            PhotoLibrary.pickedPhoto = pickedImage
-        }
+        PhotoLibrary.info = info
         
         // camera
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -82,7 +71,6 @@ extension MainViewController {
         
         picker.dismiss(animated: true)
         performSegue(withIdentifier: "toResultPage", sender: self)
-
     }
     
     // close the photo library when its cancelled

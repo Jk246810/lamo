@@ -8,11 +8,19 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 struct PhotoLibrary {
+    private static let googleAPIKey = "AIzaSyBWULC40id62H2C7Iao2ZjBu4B5mU7vkvc"
+    static var googleURL: URL {
+        return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
+    }
+    static var info: [String: Any] = [:]
+    
+    static var pickedPhoto: UIImage = UIImage()
+    
     static var resultLabelText: String = String()
     static var resultFacialText: String = String()
-    static var pickedPhoto: UIImage = UIImage()
     
     // resize the image
     static func resize(imageSize: CGSize, image: UIImage) -> Data {
@@ -39,102 +47,84 @@ struct PhotoLibrary {
         return imageData!.base64EncodedString(options: .endLineWithCarriageReturn)
     }
     
-    static func analyzeResult(_ dataToParse: Data, target mainViewController: MainViewController) {
+    static func analyzeResult(_ dataToParse: Data) {
         
-        DispatchQueue.main.async( execute: {
+        // Use swifty json to parse the result
+        let json = JSON(data: dataToParse)
+        let errorObj: JSON = json["error"]
+        
+        if (errorObj.dictionaryValue != [:]) {
+            resultLabelText = "Error code \(errorObj["code"]): \(errorObj["message"])"
+        } else {
+            // print the json to the console
+            print(json)
             
-            // Use swifty json to parse the result
-            let json = JSON(data: dataToParse)
-            let errorObj: JSON = json["error"]
+            let response: JSON = json["responses"][0]
             
-            if (errorObj.dictionaryValue != [:]) {
-                resultLabelText = "Error code \(errorObj["code"]): \(errorObj["message"])"
+            // get face annotation
+            let faceAnnotation: JSON = response["faceAnnotations"]
+            if faceAnnotation != JSON.null {
+                let emotions: Array<String> = ["joy", "sorrow", "surprise", "anger"]
+                
+                let numPeopleDetected: Int = faceAnnotation.count
+                
+                resultFacialText = "People detected: \(numPeopleDetected)\nEmotions detected:\n"
+                
+                var emotionalsTotal: [String: Double] = ["sorrow": 0, "joy": 0, "surprise": 0, "anger": 0]
+                var emotionalLikelihoods: [String: Double] = ["VERY_LIKELY": 0.9, "LIKELY": 0.75, "POSSIBLE": 0.5, "UNLIKELY": 0.25, "VERY_UNLIKELY": 0.0]
+                
+                for person in 0..<numPeopleDetected {
+                    let personData: JSON = faceAnnotation[person]
+                    
+                    for emotion in emotions {
+                        let lookup = emotion + "Likelihood"
+                        let results: String = personData[lookup].stringValue
+                        
+                        emotionalsTotal[emotion]! += emotionalLikelihoods[results]!
+                    }
+                }
+                
+                for (emotion, total) in emotionalsTotal {
+                    let likelihood: Double = total / Double(numPeopleDetected)
+                    let percent: Int = Int(round(likelihood * 100))
+                    
+                    resultFacialText += "\(emotion): \(percent)%\n"
+                }
+                
             } else {
-                // print the json to the console
-                print(json)
-                
-                let response: JSON = json["responses"][0]
-                
-                // get face annotation
-                let faceAnnotation: JSON = response["faceAnnotations"]
-                if faceAnnotation != JSON.null {
-                    let emotions: Array<String> = ["joy", "sorrow", "surprise", "anger"]
-                    
-                    let numPeopleDetected: Int = faceAnnotation.count
-                    
-                    resultFacialText = "People detected: \(numPeopleDetected)\nEmotions detected:\n"
-                    
-                    var emotionalsTotal: [String: Double] = ["sorrow": 0, "joy": 0, "surprise": 0, "anger": 0]
-                    var emotionalLikelihoods: [String: Double] = ["VERY_LIKELY": 0.9, "LIKELY": 0.75, "POSSIBLE": 0.5, "UNLIKELY": 0.25, "VERY_UNLIKELY": 0.0]
-                    
-                    for person in 0..<numPeopleDetected {
-                        let personData: JSON = faceAnnotation[person]
-                        
-                        for emotion in emotions {
-                            let lookup = emotion + "Likelihood"
-                            let results: String = personData[lookup].stringValue
-                            
-                            emotionalsTotal[emotion]! += emotionalLikelihoods[results]!
-                        }
-                    }
-                    
-                    for (emotion, total) in emotionalsTotal {
-                        let likelihood: Double = total / Double(numPeopleDetected)
-                        let percent: Int = Int(round(likelihood * 100))
-                        
-                        resultFacialText += "\(emotion): \(percent)%\n"
-                    }
-                    
-                } else {
-                    resultFacialText = "No face detected"
-                }
-                
-                // get label annotation
-                let labelAnnotation: JSON = response["labelAnnotations"]
-                let numLabel = labelAnnotation.count
-                
-                var labels: Array<String> = []
-                
-                if numLabel > 0 {
-                    var labelResultText = "Label found: "
-                    
-                    for index in 0..<numLabel {
-                        let label = labelAnnotation[index]["description"].stringValue
-                        labels.append(label)
-                    }
-                    
-                    for label in labels {
-                        if labels[labels.count - 1] != label {
-                            labelResultText += "\(label), "
-                        } else {
-                            labelResultText += "\(label) "
-                        }
-                    }
-                    
-                    resultLabelText = labelResultText
-                } else {
-                    resultLabelText = "No label found"
-                }
+                resultFacialText = "No face detected"
             }
             
-        })
-    }
-    
-    private static func runRequestOnBackgroundThread(_ request: URLRequest, target mainViewController: MainViewController) {
-        // run the request
-        let task: URLSessionDataTask = mainViewController.session.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "")
-                return
-            }
+            // get label annotation
+            let labelAnnotation: JSON = response["labelAnnotations"]
+            let numLabel = labelAnnotation.count
             
-            // call the analyze result function
-            self.analyzeResult(data, target: mainViewController)
+            var labels: Array<String> = []
+            
+            if numLabel > 0 {
+                var labelResultText = "Label found: "
+                
+                for index in 0..<numLabel {
+                    let label = labelAnnotation[index]["description"].stringValue
+                    labels.append(label)
+                }
+                
+                for label in labels {
+                    if labels[labels.count - 1] != label {
+                        labelResultText += "\(label), "
+                    } else {
+                        labelResultText += "\(label) "
+                    }
+                }
+                
+                resultLabelText = labelResultText
+            } else {
+                resultLabelText = "No label found"
+            }
         }
-        task.resume()
     }
     
-    static func createRequest(with imageBase64: String, url googleURL: URL, viewController: MainViewController) {
+    static func createRequest(with imageBase64: String, url googleURL: URL, completion: @escaping ([String]) -> Void) {
         
         var request = URLRequest(url: googleURL)
         request.httpMethod = "POST"
@@ -169,11 +159,10 @@ struct PhotoLibrary {
         
         request.httpBody = data
         
-        // run the request
-        DispatchQueue.global().async {
-            self.runRequestOnBackgroundThread(request, target: viewController)
-            print(resultFacialText)
-            print(resultLabelText)
+        Alamofire.request(request).responseJSON(queue: .global(), options: []) { response in
+            self.analyzeResult(response.data!)
+            completion([resultLabelText, resultFacialText])
         }
+        
     }
 }
