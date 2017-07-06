@@ -13,6 +13,7 @@
 		050D93531F0B01CB0098215E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93511F0B01CB0098215E /* LaunchScreen.storyboard */; };
 		050D93541F0B01CB0098215E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 050D93521F0B01CB0098215E /* Main.storyboard */; };
 		05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */; };
+		D32677AD1F0DE6A200127D76 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32677AC1F0DE6A200127D76 /* ResultsViewController.swift */; };
 		F7D397BE9D73C00AF7D03AAE /* Pods_LAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D215318AD04A20F9454109 /* Pods_LAMO.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = controllers/MainViewController.swift; sourceTree = "<group>"; };
 		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
+		D32677AC1F0DE6A200127D76 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = controllers/ResultsViewController.swift; sourceTree = "<group>"; };
 		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				05A4CB3E1F0D5AFE00FAB00E /* MainViewController.swift */,
+				D32677AC1F0DE6A200127D76 /* ResultsViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */,
 				05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */,
+				D32677AD1F0DE6A200127D76 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

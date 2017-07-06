@@ -22,6 +22,18 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var image: UIImage?
     
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resultsSegue" {
+            if let resultsViewController = segue.destination as? ResultsViewController {
+//                let images = image
+//                resultsViewController.imageView = images
+                resultsViewController.newImage = image
+                
+            }
+        }
+    }
+    
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
@@ -167,6 +179,7 @@ extension MainViewController {
         }
         
         picker.dismiss(animated: true)
+        self.performSegue(withIdentifier: "resultsSegue", sender: nil)
     }
     
     // close the photo library when its cancelled
