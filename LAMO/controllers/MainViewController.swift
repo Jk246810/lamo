@@ -22,8 +22,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var faceResult: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +67,13 @@ extension MainViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         // photo library
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // set the photo in the photolibrary to the picked image
+            PhotoLibrary.pickedPhoto = pickedImage
             // do the init during rendering the code for the images
             let binaryImageData = PhotoLibrary.base64EncodeImage(pickedImage)
             // create the request with the image data retrieved
             PhotoLibrary.createRequest(with: binaryImageData, url: googleURL, viewController: self)
-        }
+                    }
         
         // camera
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -81,6 +81,8 @@ extension MainViewController {
         }
         
         picker.dismiss(animated: true)
+        performSegue(withIdentifier: "toResultPage", sender: self)
+
     }
     
     // close the photo library when its cancelled

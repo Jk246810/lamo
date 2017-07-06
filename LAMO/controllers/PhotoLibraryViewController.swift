@@ -18,6 +18,7 @@ class PhotoLibraryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        photoView.image = PhotoLibrary.pickedPhoto
         labelResult.text = PhotoLibrary.resultLabelText
         facialResult.text = PhotoLibrary.resultFacialText
     }
