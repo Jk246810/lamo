@@ -10,8 +10,8 @@ import Foundation
 import SwiftyJSON
 
 struct PhotoLibrary {
-    static var resultLabelText: String = ""
-    static var resultFacialText: String = ""
+    static var resultLabelText: String = String()
+    static var resultFacialText: String = String()
     static var pickedPhoto: UIImage = UIImage()
     
     // resize the image
@@ -25,9 +25,23 @@ struct PhotoLibrary {
         return resizedImage!
     }
     
+    // return the image data
+    static func base64EncodeImage(_ image: UIImage) -> String {
+        var imageData = UIImagePNGRepresentation(image)
+        
+        // resize the image if it is larger than 2mb limit
+        if (imageData!.count > 2097152) {
+            let oldSize: CGSize = image.size
+            let newSize: CGSize = CGSize(width: 800, height: oldSize.height / oldSize.width * 800)
+            imageData = resize(imageSize: newSize, image: image)
+        }
+        
+        return imageData!.base64EncodedString(options: .endLineWithCarriageReturn)
+    }
+    
     static func analyzeResult(_ dataToParse: Data, target mainViewController: MainViewController) {
+        
         DispatchQueue.main.async( execute: {
-            
             
             // Use swifty json to parse the result
             let json = JSON(data: dataToParse)
@@ -106,20 +120,6 @@ struct PhotoLibrary {
         })
     }
     
-    // return the image data
-    static func base64EncodeImage(_ image: UIImage) -> String {
-        var imageData = UIImagePNGRepresentation(image)
-        
-        // resize the image if it is larger than 2mb limit
-        if (imageData!.count > 2097152) {
-            let oldSize: CGSize = image.size
-            let newSize: CGSize = CGSize(width: 800, height: oldSize.height / oldSize.width * 800)
-            imageData = resize(imageSize: newSize, image: image)
-        }
-        
-        return imageData!.base64EncodedString(options: .endLineWithCarriageReturn)
-    }
-    
     private static func runRequestOnBackgroundThread(_ request: URLRequest, target mainViewController: MainViewController) {
         // run the request
         let task: URLSessionDataTask = mainViewController.session.dataTask(with: request) { (data, response, error) in
@@ -172,6 +172,8 @@ struct PhotoLibrary {
         // run the request
         DispatchQueue.global().async {
             self.runRequestOnBackgroundThread(request, target: viewController)
+            print(resultFacialText)
+            print(resultLabelText)
         }
     }
 }

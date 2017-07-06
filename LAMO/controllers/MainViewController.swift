@@ -67,13 +67,13 @@ extension MainViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         // photo library
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            // set the photo in the photolibrary to the picked image
-            PhotoLibrary.pickedPhoto = pickedImage
             // do the init during rendering the code for the images
             let binaryImageData = PhotoLibrary.base64EncodeImage(pickedImage)
             // create the request with the image data retrieved
             PhotoLibrary.createRequest(with: binaryImageData, url: googleURL, viewController: self)
-                    }
+            // set the photo in the photolibrary to the picked image
+            PhotoLibrary.pickedPhoto = pickedImage
+        }
         
         // camera
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
