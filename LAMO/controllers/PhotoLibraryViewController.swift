@@ -16,22 +16,22 @@ class PhotoLibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        photoView.image = PhotoLibrary.pickedPhoto
         
         if let pickedImage = PhotoLibrary.info[UIImagePickerControllerOriginalImage] as? UIImage {
             // do the init during rendering the code for the images
             let binaryImageData = PhotoLibrary.base64EncodeImage(pickedImage)
             // create the request with the image data retrieved
+            
             PhotoLibrary.createRequest(with: binaryImageData, url: PhotoLibrary.googleURL, completion: { (result) in
-                self.labelResult.text = result[0]
-                self.facialResult.text = result[1]
+                DispatchQueue.main.async {
+                    self.labelResult.text = result[0]
+                    self.facialResult.text = result[1]
+                    self.photoView.image = pickedImage
+                }
             })
             
-            // set the photo in the photolibrary to the picked image
-            PhotoLibrary.pickedPhoto = pickedImage
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

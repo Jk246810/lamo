@@ -17,8 +17,6 @@ struct PhotoLibrary {
     }
     static var info: [String: Any] = [:]
     
-    static var pickedPhoto: UIImage = UIImage()
-    
     static var resultLabelText: String = String()
     static var resultFacialText: String = String()
     
