@@ -13,7 +13,9 @@ class PhotoLibraryViewController: UIViewController {
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var labelResult: UILabel!
     @IBOutlet weak var facialResult: UILabel!
-
+    
+    var newImage: UIImage? = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

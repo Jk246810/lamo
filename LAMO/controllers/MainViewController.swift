@@ -15,16 +15,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var image: UIImage?
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "resultsSegue" {
-//            if let resultsViewController = segue.destination as? ResultsViewController {
-////                let images = image
-////                resultsViewController.imageView = images
-//                resultsViewController.newImage = image
-//                
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toResultPage" {
+            if let resultsViewController = segue.destination as? PhotoLibraryViewController {
+                resultsViewController.newImage = image
+            }
+        }
+    }
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
