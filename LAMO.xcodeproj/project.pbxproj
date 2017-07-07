@@ -27,6 +27,7 @@
 		05C7692E1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoLibraryViewController.swift; path = controllers/PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		61D215318AD04A20F9454109 /* Pods_LAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8730E02517D02403C3DDD24 /* Pods-LAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.release.xcconfig"; sourceTree = "<group>"; };
+		D32677AC1F0DE6A200127D76 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = controllers/ResultsViewController.swift; sourceTree = "<group>"; };
 		DEB14B3B95ECB5279EEA2E3F /* Pods-LAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAMO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAMO/Pods-LAMO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +259,7 @@
 				050D93391F0AEDA60098215E /* AppDelegate.swift in Sources */,
 				05C7692F1F0EAB3F00661CE7 /* PhotoLibraryViewController.swift in Sources */,
 				05A4CB3F1F0D5AFE00FAB00E /* MainViewController.swift in Sources */,
+				D32677AD1F0DE6A200127D76 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

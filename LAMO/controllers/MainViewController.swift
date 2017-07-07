@@ -15,6 +15,14 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var image: UIImage?
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toResultPage" {
+            if let resultsViewController = segue.destination as? PhotoLibraryViewController {
+                resultsViewController.newImage = image
+            }
+        }
+    }
+    
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
 
@@ -70,6 +78,8 @@ extension MainViewController {
         }
         
         picker.dismiss(animated: true)
+
+//        self.performSegue(withIdentifier: "resultsSegue", sender: nil)
         performSegue(withIdentifier: "toResultPage", sender: self)
     }
     
